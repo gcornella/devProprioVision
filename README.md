@@ -15,36 +15,33 @@ Make sure you have the following installed:
 
 ---
 
-### 📥 Download & Run
+## 🤝 Contributing
 
-Clone the repository:
+Go to [https://github.com/gcornella/devpropriovision](https://github.com/gcornella/devpropriovision) and click **Fork** to create your own copy of the repo.
 
+### Clone Your Fork Locally:
 ```bash
-git clone https://github.com/gcornella/devpropriovision
+git clone https://github.com/YOUR_USERNAME/devpropriovision
 cd devpropriovision
-```
+````
 
-Install dependencies:
-
-```bash
-npm install
-# or
-yarn install
-```
-
-Run the development server:
+### Create a Feature Branch Named After Your Assessment:
 
 ```bash
-npm run dev
-# or
-yarn dev
+git checkout -b your-assessment-name
 ```
 
-Open your browser at:
+### Commit and Push Changes:
 
+```bash
+git add .
+git commit -m "Add assessment: your-assessment-name"
+git push -u origin your-assessment-name
 ```
-http://localhost:5173
-```
+
+### Submit a Pull Request:
+
+Go to your fork on GitHub and click **“Compare & pull request”** to propose your changes.
 
 ---
 
@@ -136,34 +133,38 @@ Deploy your app to Vercel in 5 steps:
 
 ---
 
-## 🤝 Contributing
+### 📥 Just Download & Run
 
-Go to [https://github.com/gcornella/devpropriovision](https://github.com/gcornella/devpropriovision) and click **Fork** to create your own copy of the repo.
+Clone the repository:
 
-### Clone Your Fork Locally:
 ```bash
-git clone https://github.com/YOUR_USERNAME/devpropriovision
+git clone https://github.com/gcornella/devpropriovision
 cd devpropriovision
-````
-
-### Create a Feature Branch Named After Your Assessment:
-
-```bash
-git checkout -b your-assessment-name
 ```
 
-### Commit and Push Changes:
+Install dependencies:
 
 ```bash
-git add .
-git commit -m "Add assessment: your-assessment-name"
-git push -u origin your-assessment-name
+npm install
+# or
+yarn install
 ```
 
-### Submit a Pull Request:
+Run the development server:
 
-Go to your fork on GitHub and click **“Compare & pull request”** to propose your changes.
+```bash
+npm run dev
+# or
+yarn dev
+```
 
+Open your browser at:
+
+```
+http://localhost:5173
+```
+
+---
 
 ## 📜 Citation
 
