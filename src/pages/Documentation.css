@@ -1,0 +1,44 @@
+.doc-container {
+  background-color: #f9fafb;              /* Light background */
+  color: #111827;                         /* Dark text */
+  padding: 40px;                            /* Inner spacing */
+  margin: auto;                             /* Center container */
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;    /* Clean, readable font */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); /* Subtle shadow for depth */
+}
+
+.doc-section {
+  margin-bottom: 32px;                    /* Space between sections */
+}
+
+.doc-title {
+  font-size: 32px;                        /* Large title font */
+  font-weight: bold;                      /* Bold weight */
+  margin-bottom: 24px;                    /* Space below title */
+  color: #1f2937;                       /* Darker heading color */
+}
+
+.doc-section h2 {
+  font-size: 24px;                        /* Subheading size */
+  margin-bottom: 12px;                    /* Space below subheading */
+  color: #2563eb;                       /* Blue color for subheadings */
+}
+
+pre {
+  background-color: #e5e7eb;            /* Light gray background for code block */
+  color: #111827;                       /* Dark text for code */
+  padding: 12px;                          /* Inner spacing */
+  border-radius: 8px;                     /* Rounded corners */
+  overflow-x: auto;                       /* Enable horizontal scroll for long lines */
+  font-family: monospace;                 /* Monospaced font for code */
+}
+
+code {
+  color: #111827;                       /* Consistent dark text color for inline code */
+}
+
+
+/* 📱 Responsive styles for portrait mode */
+@media (orientation: portrait) { 
+
+}

@@ -1,0 +1,371 @@
+
+.secondarypage-container {
+  display: flex;                /* Enables flexbox layout */
+  flex-direction: row;       /* Stack elements vertically (default for mobile) */
+  align-items: center; /* Center the content horizontally */
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(to bottom, rgb(88, 175, 166), rgb(142, 241, 138)); 
+  position:relative;
+  overflow: auto; /* Prevent scrolling */
+}
+
+/* Container for video and canvas */
+.video-canvas-overlay {
+  display: flex;
+  position: relative;  /* Full screen */
+  justify-content: center;
+  align-items: center;
+  position:relative; 
+
+  flex: 5; /* Or any desired aspect ratio, for example 16:9 */
+  
+  margin: 10px;
+  max-height:100%;
+  z-index: 10;
+}
+
+.video {
+  width: 100%;     /* Take full width */
+    height: 100%;    /* Take full height */
+    object-fit: cover; /* Maintain aspect ratio, but cut excess */
+    border-radius: 20px;
+}
+
+.canvas {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* Maintain aspect ratio, but cut excess */
+}
+
+.show {
+  display: block;
+}
+
+.buttonContainer {
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+}
+
+
+.tutorialContainer {
+  display: flex;
+  position: relative;  /* Full screen */
+  flex-direction: column;       /* Stack elements vertically (default for mobile) */
+  justify-content: flex-end; /* Align items to the bottom */
+  align-items: center;
+
+  flex: 4; /* Or any desired aspect ratio, for example 16:9 */
+  margin: 10px;
+  max-height: 100%;
+ 
+ 
+}
+
+.imgTutorial {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  max-width: 80%;
+  max-height: 90%;
+  pointer-events: none;
+  z-index: 1;
+  background-color: transparent;
+}
+
+.videoTutorial {
+
+  object-fit: cover; /* Scale down to fit within the container, but do not scale up */
+  
+  width: 100%;
+
+  height: 100%;                 /* Take full height */
+  max-width: 80%;              /* Ensure the video doesn't exceed the container's width */
+  max-height: 90%;             /* Ensure the video doesn't exceed the container's height */
+ 
+  pointer-events: none; /* Disable interaction with the video */
+ 
+  z-index: 990;
+  background-color: transparent; /* Set background color to transparent */
+}
+
+.instructionsContainer {
+  text-align: center;
+  width: 90%;
+  color: white;
+  background-color: rgb(58, 56, 56);
+  border-radius: 15px;
+
+  /* 👇 Reserve height for 2 lines of text */
+  min-height: calc(1em * 2.8); /* 2 lines + some line-height padding */
+  line-height: 1.4em;          /* line spacing (optional tweak) */
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px;
+}
+
+.instructions_text {
+  font-size: 22px;
+  margin: 0px;
+}
+
+.fingerLabelBig_text{
+  font-size: 4rem;
+  margin: 0px;
+  color: rgb(58, 56, 56); /* Sets text color to black */
+
+}
+
+
+
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.95); /* Semi-transparent background */
+  z-index: 1000; /* Ensure the popup is above other elements */
+}
+
+.popup-container {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* 👈 ensure content stacks from the top */
+  text-align: center;
+  margin: 10px;
+  z-index: 1001; /* Ensure the popup is above other elements */
+
+  overflow-y: auto;
+
+}
+@supports (height: 75dvh) {
+  .popup-container{
+    max-height: 75dvh; /* ✅ dynamic viewport height that respects safe areas */
+  }
+}
+
+.popup-title-text{
+  font-size: 1.8rem;
+  margin: 0px;
+  color: rgb(58, 56, 56); /* Sets text color to black */
+}
+
+.popup-button{
+  background-color: transparent;
+  border: none;
+  color: black;
+  font-size: 1.5rem;
+  cursor: pointer;
+  background-color: rgb(181, 184, 184);
+  margin: 10px;
+  border-radius: 20px;
+  padding: 10px;
+  line-height: 1.5;
+
+}
+
+.popup-button:hover {
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4); /* Shadow on hover */
+  transform: scale(1.03);
+}
+
+.closeIntroPopup-button {
+  background: transparent;
+  border: none;
+  font-size: 1.4rem;
+  cursor: pointer;
+  color: #333;
+  display: block;
+  margin-left: 0;
+  padding: 0;
+  transition: transform 0.1s ease;
+}
+
+.closeIntroPopup-button:focus,
+.closeIntroPopup-button:active {
+ outline: none;
+  border: none;
+  box-shadow: none;
+  transform: scale(1.2); /* Grows when pressed */
+}
+
+
+
+.introPopup-button {
+  all: unset;
+  appearance: none;
+  display: inline-block;
+  padding: 0.75rem 2rem;
+  font-size: 2rem;
+  border: 5px solid #4c51bf;
+  border-radius: 20px;
+  background-color: gray;
+  color: black;
+  cursor: pointer;
+  text-align: center;
+  transition: transform 0.2s;
+  margin: 10px
+}
+
+.introPopup-button:hover {
+  transform: scale(1.05);
+}
+
+
+
+
+.rainbow-border-button {
+  all: unset;
+  appearance: none;
+  display: inline-block;
+  padding: 0.75rem 2rem;
+  font-size: 2rem;
+  border: 5px solid transparent;
+  border-radius: 20px;
+  background:
+    linear-gradient(rgb(181, 184, 184), rgb(181, 184, 184)) padding-box,
+    linear-gradient(90deg,
+      red, orange, yellow, green, blue, indigo, violet,
+      red, orange, yellow, green, blue, indigo, violet, red
+    ) border-box;
+  background-clip: padding-box, border-box;
+  background-origin: border-box;
+  background-size: 200% 100%;
+  animation: rainbow-scroll 6s linear infinite;
+  color: black;
+  cursor: pointer;
+  text-align: center;
+  margin: 10px
+}
+
+
+.rainbow-border-button:hover {
+  border-color: #4c51bf;
+  transform: scale(1.05);
+ 
+}
+
+@keyframes rainbow-scroll {
+  0% {
+    background-position: 0% 0%;
+  }
+  100% {
+    background-position: 100% 0%;
+  }
+}
+
+
+.popupDebugContainer {
+    position: absolute; 
+    top: 50%; 
+    left: 50%; 
+    transform: translate(-50%, -50%); 
+    background: rgb(238, 91, 91); 
+    padding: 20px; 
+    border-radius: 10px; 
+    z-index: 50;
+}
+
+
+.confettiContainer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 100;
+    pointer-events: none; /* Let clicks pass through */
+}
+
+        
+.resultsContainer {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(255, 255, 255, 0.9);
+  padding: 20px;
+  border-radius: 25px;
+  z-index: 101;
+  display: flex;              /* Add these for flexbox centering */
+  flex-direction: column;     /* Stack elements vertically */
+  justify-content: center;
+  align-items: center;
+}
+
+.resultsText{
+  font-size: 3rem;
+  color: rgb(58, 56, 56); /* Sets text color to black */
+}
+.resultsTextInches{
+  font-size: 2rem;
+}
+
+
+/* 📱 Responsive styles for portrait mode */
+@media (orientation: portrait) {
+  
+  .secondarypage-container {
+    flex-direction: column;      /* Stack elements horizontally */
+  }
+
+  .video-canvas-overlay {
+    max-height: calc(60% - 20px);
+    flex: none;
+  }
+ 
+  .video {
+    max-width: 100%; /* Ensure the video doesn't exceed the container's width */
+    max-height: 100%; /* Ensure the video doesn't exceed the container's height */
+    object-fit: contain; /* Downsize the video if it's too big while maintaining aspect ratio */
+  }
+  .videoTutorial{
+    object-fit: cover; /* Maintain aspect ratio, but cut excess */
+    object-fit: contain; /* Maintain aspect ratio, fit within container */
+    object-fit: fill; /* Stretch to fill the container, may distort aspect ratio */
+    object-fit: none; /* Do not scale the content */
+    object-fit: scale-down; /* Scale down to fit within the container, but do not scale up */
+  }
+   
+  .tutorialContainer {
+    max-height: calc(40% - 20px);
+    flex: none;
+  }
+  .fingerLabelBig_text{
+    font-size: 2.2rem;
+  }
+
+  .introPopup-button{
+    font-size: 1.3rem;
+  }
+
+    
+  .resultsContainer {
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 70%;
+    z-index: 2000;
+  }
+
+  .resultsText{
+    font-size: 2rem;
+  }
+
+  .resultsTextInches{
+    font-size: 1.5rem;
+  }
+}
+
+
+

@@ -1,0 +1,137 @@
+/* Hand selection container */
+.settings.container{
+   background: linear-gradient(to bottom, rgb(155, 155, 155), rgb(255, 255, 255));  /* Background gradient from gray to white */
+}
+
+/* Hand selection container */
+.hand-selection {
+  padding: 10px;
+}
+
+/* Spasticity selection container */
+.spasticity-selection {
+  padding: 10px;
+}
+
+/* Age selection container */
+.age-selection {
+  padding: 10px;
+}
+
+.ageSlider-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  width: 100%;
+  margin-top: 20px;
+  color: red
+}
+
+.ageSlider-container input[type="range"] {
+  -webkit-appearance: none;   /* Needed to fully style in Safari */
+  width: 300px;
+  height: 10px;
+  background: transparent;    /* Use custom track */
+}
+
+/* Track (gray line) */
+.ageSlider-container input[type="range"]::-webkit-slider-runnable-track {
+  height: 6px;
+  background: #d3d3d3;        /* Light gray */
+  border-radius: 3px;
+}
+
+/* Thumb (blue button) */
+.ageSlider-container input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  height: 18px;
+  width: 18px;
+  background: #4c51bf;        /* Your blue */
+  border-radius: 50%;
+  border: none;
+  margin-top: -6px;           /* Align thumb with track vertically */
+}
+
+
+/* Age box - visual appearance for selected age */
+.ageBox {
+  background-color: #4c51bf;   /* Indigo background */
+  color: white;                /* White text */
+  margin: 10px;                /* Outer spacing */
+  padding: 10px 10px;          /* Inner spacing */
+  min-width: 100px;            /* Ensure a minimum width */
+  border-radius: 20px;         /* Rounded corners */
+  font-size: 1.5rem;           /* Larger text size */
+  text-align: center;          /* Center the text */
+  line-height: 1.5;
+}
+
+/* Sex selection container */
+.sex-selection {
+  padding: 10px;
+}
+
+/* HandSize selection container */
+.handSize-selection{
+  padding: 10px;
+}
+
+.sizeAndButton-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;        /* Vertical centering */
+  justify-content: center;   /* Horizontal centering */
+  text-align: center;
+}
+
+
+
+/* Camera selection container */
+.camera-selection {
+  padding: 10px;
+}
+
+/* Camera dropdown - styled select element */
+.camera-dropdown {
+  width: 100%;                 /* Full width */
+  max-width: 500px;            /* Limit maximum width */
+  padding: 12px 16px;          /* Inner spacing */
+  font-size: 1.5rem;           /* Text size */
+  border-radius: 15px;         /* Rounded corners */
+  border: 2px solid;           /* Border width and style */
+  background-color: #4c51bf;   /* Indigo background */
+  color: white;                /* White text */
+  cursor: pointer;             /* Pointer cursor on hover */
+}
+
+/* Camera dropdown focus state */
+.camera-dropdown:focus {
+  outline: none;                             /* Remove default outline */
+  border-color: #667eea;                     /* Indigo border on focus */
+  box-shadow: 0 0 0 2px rgba(76, 81, 191, 0.4); /* Highlight ring */
+}
+
+/* Camera preview container */
+.camera-preview {
+  display: flex;
+  justify-content: center;     /* Center video horizontally */
+}
+
+/* Small video preview - mirrored camera video */
+.small-video {
+  width: 100%;                  /* Fill full width of parent */
+  max-width: 500px;             /* Limit width */
+  height: auto;                 /* Maintain aspect ratio */
+  object-fit: cover;            /* Crop to fill container */
+  border: 5px solid #4c51bf;    /* Indigo border */
+  border-radius: 20px;          /* Rounded corners */
+  transform: scaleX(-1);        /* Mirror the video horizontally */
+}
+
+/* 📱 Responsive styles for portrait mode */
+@media (orientation: portrait) {
+  .ageSlider-container {
+    flex-direction: column;     /* Stack elements vertically */
+  }
+}

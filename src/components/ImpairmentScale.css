@@ -1,0 +1,47 @@
+.impairment-container-horizontal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 90%;
+  margin: auto;
+}
+
+.impairment-bar-horizontal {
+  position: relative;
+  height: 2rem;
+  width: 100%;
+  border-radius: 9999px;
+  background: linear-gradient(to left, #00ff00, #ffff00, #ff9900, #ff0000); /* Green -> Red */
+}
+
+.impairment-ball-horizontal {
+  position: absolute;
+  bottom: 50%;
+  transform: translate(-50%, 50%);
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 9999px;
+  border: 2px solid black;
+  background-color: white;
+}
+
+.impairment-labels-horizontal {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  font-size: 1.6rem;
+  padding: 0 0.5rem;
+  color: #333
+}
+
+.impairment-label-horizontal {
+  text-align: center;
+  flex: 1;
+}
+
+
+@media (orientation: portrait) {
+  .impairment-labels-horizontal{
+    font-size: 1rem; /* Adjust font size for portrait mode */
+  }
+}

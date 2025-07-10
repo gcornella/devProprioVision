@@ -1,0 +1,24 @@
+.footer {
+  display: flex;               /* Use flexbox to align items */
+  justify-content: center;     /* Horizontally center the text */
+  align-items: center;         /* Vertically center the text */
+  text-align: center;
+  padding: 2px;
+  background-color: rgb(202, 202, 202);
+ 
+  
+  /* Removed position: fixed, bottom: 0 */
+}
+
+.footer-text {
+  color: rgb(0, 0, 0);
+  font-size: 0.8rem;
+  margin: 0;
+}
+
+/* e.g. iPhone smaller screens */
+@media (max-width: 500px) {
+  .footer-text {
+    font-size: 1rem;
+  }
+}

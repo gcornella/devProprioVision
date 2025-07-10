@@ -1,0 +1,31 @@
+.secondarypage-container {
+  background: linear-gradient(to bottom, rgb(155, 155, 155), rgb(255, 255, 255));  /* Background gradient from gray to white */
+}
+
+.progress-bar-container {
+  position: relative;                        /* Allows absolute positioning inside if needed */
+  display: flex;                             /* Use flexbox layout */
+  align-items: center;                       /* Vertically center children */
+  width: 90%;                                /* Set width to 90% of parent */
+  min-height: 20px;                              /* Set fixed height */
+  margin: 5px 0;                             /* Vertical spacing above and below */
+  background-color: #e0e0de;               /* Light gray background color */
+  border-radius: 15px;                       /* Rounded corners */
+  overflow: hidden;                          /* Clip overflowing content */
+  z-index: 5;  
+}
+
+.progress-bar-fill {
+  height: 100%;                              /* Fill full height of container */
+  min-height: 10px; 
+  background: linear-gradient(to right, rgb(88, 175, 166), rgb(142, 241, 138));  /* Greenish gradient from left to right */
+  transition: width 0.4s ease-in-out;        /* Smooth animation when width changes */
+  will-change: width; /* ✅ hint to Safari for smoother transition */
+  transform: translateZ(0); /* ✅ force layer promotion */
+}
+
+/* 📱 Responsive styles for portrait mode */
+@media (orientation: portrait) { 
+  
+}
+

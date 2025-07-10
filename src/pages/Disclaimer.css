@@ -1,0 +1,71 @@
+.disclaimer-container {
+  max-width: 70%;                          /* Limit width to 70% of the parent */
+  margin: 3rem auto;                       /* Center container with vertical spacing */
+  padding: 2rem;                           /* Inner spacing */
+  
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;  /* Set font family */
+  font-size: 1.25rem;                     /* Base font size */
+  line-height: 1.6;                       /* Improve readability */
+  color: #333;                          /* Text color */
+
+  background-color: #d6d6d6;            /* Light gray background */
+  border-radius: 12px;                    /* Rounded corners */
+  box-shadow: 0 20px 8px rgba(0, 0, 0, 0.1); /* Soft drop shadow */
+}
+
+.disclaimer-container h1 {
+  font-size: 2.2rem;                      /* Large heading size */
+  margin-bottom: 1.5rem;                  /* Space below heading */
+  text-align: center;                     /* Center align */
+}
+
+.disclaimer-container h2 {
+  font-size: 1.6rem;                      /* Subheading size */
+  margin-top: 2rem;                       /* Space above */
+  margin-bottom: 1rem;                    /* Space below */
+}
+
+.disclaimer-container ul {
+  margin-left: 1.5rem;                    /* Indent list from left */
+  padding-left: 1rem;                     /* Additional left padding */
+}
+
+.disclaimer-container li {
+  margin-bottom: 1rem;                    /* Space between list items */
+}
+
+.disclaimer-container p {
+  margin-bottom: 1.2rem;                  /* Space below paragraphs */
+}
+
+/* 📱 Responsive styles for portrait mode */
+@media (orientation: portrait) { 
+  .disclaimer-container {
+    max-width: 100%;                      /* Use full width on small screens */
+    margin: 1rem 1rem;                    /* Narrower outer margins */
+    padding: 1rem;                        /* Less inner padding */
+  }
+
+  .disclaimer-container h1 {
+    font-size: 1.8rem;                    /* Slightly smaller heading */
+  }
+
+  .disclaimer-container h2 {
+    font-size: 1.2rem;                    /* Smaller subheading */
+    margin-top: 1rem;                     /* Reduced spacing */
+    margin-bottom: 0rem;
+  }
+
+  .disclaimer-container ul {
+    margin-left: 0.2rem;                  /* Less list indentation */
+    padding-left: 1rem;
+  }
+
+  .disclaimer-container li {
+    font-size: 0.9rem;                    /* Smaller list items */
+  }
+
+  .disclaimer-container p {
+    font-size: 0.9rem;                    /* Smaller paragraph text */
+  }
+}

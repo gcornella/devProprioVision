@@ -1,0 +1,84 @@
+/*Component-specific styles for the App component.*/
+
+/* Remove default margin and padding from body and html */
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%; /* Ensure body and html fill the entire viewport */
+  width: 100%; /* Ensure body and html fill the entire viewport */
+  overflow: hidden; /* Prevent scrolling */
+  color-scheme: light;
+}
+
+
+.full-screen-element {
+  display: flex;
+  flex-direction: column; /* Arrange children vertically */
+  width: 100vw; /* Full width of the viewport */
+  height: 100vh; 
+  overflow: hidden; /* Prevent scrolling */
+  margin: 0;
+  padding: 0;
+  background: #fefdfb; /* Gradient background */
+
+  padding-bottom: env(safe-area-inset-bottom);
+  padding-top: env(safe-area-inset-top);
+}
+
+@supports (height: 100dvh) {
+  .full-screen-element {
+    height: 100dvh; /* ✅ dynamic viewport height that respects safe areas */
+  }
+}
+
+
+.page-content{
+  flex: 1 1 auto;  /* It will take the remaining space */
+  overflow: auto;  /* Allow internal scrolling inside the page */
+  box-sizing: border-box; /* Ensure padding doesn't overflow */
+}
+
+/* Styling for the logo */
+.logo {
+  height: 6em; /* Sets the height of the logo */
+  padding: 1.5em; /* Adds padding around the logo */
+  will-change: filter; /* Optimizes performance by telling the browser the logo might change its filter property */
+  transition: filter 300ms; /* Adds a smooth transition effect to the filter when it changes */
+}
+
+/* Logo hover effect with a default shadow */
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa); /* Adds a blue shadow when hovered */
+}
+
+/* Logo hover effect for elements with 'react' class */
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa); /* Adds a different shadow when hovered if the logo has the 'react' class */
+}
+
+/* Animation for spinning the logo */
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg); /* Start from 0 degrees */
+  }
+  to {
+    transform: rotate(360deg); /* Rotate to 360 degrees (full rotation) */
+  }
+}
+
+/* Applying animation only if the user prefers motion */
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear; /* Makes the second anchor tag's logo spin infinitely every 20 seconds */
+  }
+}
+
+/* Styling for cards */
+.card {
+  padding: 2em; /* Adds padding inside the card */
+}
+
+/* Styling for the 'read-the-docs' link */
+.read-the-docs {
+  color: #888; /* Sets a grey color for the text */
+}
