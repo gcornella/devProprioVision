@@ -15,46 +15,6 @@ Make sure you have the following installed:
 
 ---
 
-## 🤝 Contributing
-
-Go to [https://github.com/gcornella/devpropriovision](https://github.com/gcornella/devpropriovision) and click **Fork** to create your own copy of the repo.
-
-### Clone Your Fork Locally:
-```bash
-git clone https://github.com/YOUR_USERNAME/devpropriovision
-cd devpropriovision
-````
-
-### Create a Feature Branch Named After Your Assessment:
-
-```bash
-git checkout -b your-assessment-name
-```
-
-## 🧑‍💻 Customize or Build Your Own
-
-1. Open `YourProject.tsx` and look for `TODO` comments.
-2. Define which landmarks to use, how to calculate accuracy, and feedback logic.
-3. Results are automatically saved per session.
-
-Adapt logic to create new assessments by modifying distance logic, target zones, or animations.
-
----
-
-### Commit and Push Changes:
-
-```bash
-git add .
-git commit -m "Add assessment: your-assessment-name"
-git push -u origin your-assessment-name
-```
-
-### Submit a Pull Request:
-
-Go to your fork on GitHub and click **“Compare & pull request”** to propose your changes.
-
----
-
 ## 📂 Project Structure
 
 ```
@@ -73,6 +33,38 @@ devProprioVision
 └── vercel.json          # Vercel deploy settings
 ```
 
+---
+
+## 📥 Just Download & Run
+
+Clone the repository:
+
+```bash
+git clone https://github.com/gcornella/devpropriovision
+cd devpropriovision
+```
+
+Install dependencies:
+
+```bash
+npm install
+# or
+yarn install
+```
+
+Run the development server:
+
+```bash
+npm run dev
+# or
+yarn dev
+```
+
+Open your browser at:
+
+```
+http://localhost:5173
+```
 ---
 
 ## ⚙️ Contexts
@@ -128,6 +120,7 @@ This is the main logic file for your proprioceptive assessment or game. It bring
 
 This file is modular and designed for rapid prototyping of new proprioceptive tasks.
 
+---
 
 ## ☁️ Deployment to Vercel
 
@@ -151,36 +144,42 @@ Deploy your app to Vercel in 5 steps:
 
 ---
 
-### 📥 Just Download & Run for faster testing
 
-Clone the repository:
+## 🤝 Contributing
 
+Go to [https://github.com/gcornella/devpropriovision](https://github.com/gcornella/devpropriovision) and click **Fork** to create your own copy of the repo.
+
+### Clone Your Fork Locally:
 ```bash
-git clone https://github.com/gcornella/devpropriovision
+git clone https://github.com/YOUR_USERNAME/devpropriovision
 cd devpropriovision
-```
+````
 
-Install dependencies:
-
-```bash
-npm install
-# or
-yarn install
-```
-
-Run the development server:
+### Create a Feature Branch Named After Your Assessment:
 
 ```bash
-npm run dev
-# or
-yarn dev
+git checkout -b your-assessment-name
 ```
 
-Open your browser at:
+### 🧑‍💻 Customize or Build Your Own
 
+1. Open `YourProject.tsx` and look for `TODO` comments.
+2. Define which landmarks to use, how to calculate accuracy, and feedback logic.
+3. Results are automatically saved per session.
+
+Adapt logic to create new assessments by modifying distance logic, target zones, or animations.
+
+### Commit and Push Changes:
+
+```bash
+git add .
+git commit -m "Add assessment: your-assessment-name"
+git push -u origin your-assessment-name
 ```
-http://localhost:5173
-```
+
+### Submit a Pull Request:
+
+Go to your fork on GitHub and click **“Compare & pull request”** to propose your changes.
 
 ---
 
