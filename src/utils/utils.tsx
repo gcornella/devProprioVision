@@ -452,7 +452,7 @@ export const getGlowColorSymmetry = (symmetryScore: number): GlowColor => {
 export function calculateMeanDistance(values: number[]): number {
   if (!Array.isArray(values) || values.length === 0) return 0;
 
-  // Step 1: Cap OpenPoint Distance values > 10 at 10
+  // Step 1: Cap the outcome metrics larger than 10 at 10 (TODO -> use your own mean function, or remove the threshold cap)
   const cappedValues = values.map(val => (val > 10 ? 10 : val));
 
   // Step 2: Calculate the mean

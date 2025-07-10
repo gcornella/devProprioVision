@@ -4,9 +4,10 @@ import Lottie from 'lottie-react';
 import { HandLandmarker, FilesetResolver } from '@mediapipe/tasks-vision';
 
 // Import external functions
-import { drawLandmarks_simple, calculateDistance, calculateSpeed, calculateHandSizePX, applyGlowEffect, getGlowColor, calculateMeanDistance, generateSessionId, checkMovementStopped} from '../utils/utils';
+import { drawLandmarks_simple, calculateDistance, calculateHandSizePX, applyGlowEffect, getGlowColor, calculateMean, generateSessionId} from '../utils/utils';
 import { checkNavigatorAgent, checkWebGLAvailability} from '../utils/checks';
 import { saveResultsData } from '../utils/saveToLocalStorage';
+// TODO -> If you add more functions to utils/utils.tsx, import them here
 
 // Import contexts
 import { useUser } from "../contexts/UserContext"; 
@@ -56,9 +57,9 @@ const YourProject = () => {
   const [canvasRunning, setCanvasRunning] = useState(false);
 
   // Hand-related states (models, landmarks, type of hand, etc)
-  const handLandmarker = useRef<HandLandmarker | null>(null);
-  const handSizeCMRef = useRef<number|null>(null); // Ref for storing distances
-  const handSizePXRef = useRef<number>(0); // Ref for storing distances
+  const handLandmarker = useRef<HandLandmarker | null>(null); // Ref to manage the hand landmarker model
+  const handSizeCMRef = useRef<number|null>(null);  // Ref to manage hand size in centimeters
+  const handSizePXRef = useRef<number>(0);          // Ref to manage hand size in pixels
   const [selectedHand, setSelectedHand] = useState<string>('Left'); // Ref to manage selected hand
   const selectedHandRef = useRef(selectedHand); // Ref to manage selected hand
   useEffect(() => {selectedHandRef.current = selectedHand;}, [selectedHand]); // Keep track of selectedHand changes
@@ -67,17 +68,17 @@ const YourProject = () => {
   useEffect(() => {selectedFingertipsRef.current = selectedFingertips;}, [selectedFingertips]);
  
   // UI-related states
-  const [showIntroPopup, setShowIntroPopup] = useState(true); // State to manage the intro popup
+  const [showIntroPopup, setShowIntroPopup] = useState(true); 
   const [isWebGLAvailable, setWebGLAvailable] = useState<boolean>(true);
 
   // tutorial/instructions related states
   const [instructionsText, setInstructionsText] = useState('Example: Touch both index fingertips together');
-  const [instructionsBigText, setInstructionsBigText] = useState<string>('Both hands'); // State to manage the label text
+  const [instructionsBigText, setInstructionsBigText] = useState<string>('Touch index fingertips'); // State to manage the label text
 
   // Detect the navigator agent
   const { isMac, isWindows, isAndroid, isiOS, isSafari, isChrome, isEdge } = checkNavigatorAgent(); // Check the user agent to determine the OS and browser
 
-  // YourProject-specific states (proprioceptive metric, distance, speed, etc [fill with your own metrics])
+  // TODO -> YourProject-specific states (proprioceptive metric, distance, speed, etc [fill with your own metrics])
   const resultsRef = useRef<number[]>([]); // This is an example on how to set a variable for storing results
 
   // The camera settings have been loaded
@@ -145,8 +146,6 @@ const YourProject = () => {
     }  
   }, [userSettingsLoaded]); 
   
-
-
   // Detect OS and browser
   useEffect(() => {
     console.log('💻 isMac: ', isMac);
@@ -228,7 +227,7 @@ const YourProject = () => {
     } 
   }, [webcamRunning, handLandmarker, showIntroPopup]);
   
-  
+  // Start prediction of hand landmarks  when session is finished
   useEffect(() => { 
     console.log('🏁 Finished the session', sessionFinished);
     sessionFinishedRef.current = sessionFinished;
@@ -238,20 +237,21 @@ const YourProject = () => {
     predictWebcam(); // Restart the prediction loop
   }, [sessionFinished]); 
  
+  // Reset session results when starting a new session
   useEffect(() => { 
     if (startNewSession === true){
       console.log('🪜 Starting new session');
       sessionIdRef.current = generateSessionId(); // create new session ID
-      
-      sessionFinishedRef.current = false;
-      taskRepsRef.current = 1;
-      sessionResultsRef.current = []; // Reset session results
+      sessionFinishedRef.current = false;         // Reset session finished state
+      taskRepsRef.current = 1;                    // Reset task repetitions counter
+      sessionResultsRef.current = [];             // Reset session results
 
-      setSessionFinished(false); // Reset session finished state
-      setStartNewSession(false); 
+      setSessionFinished(false);                  // Reset session finished state
+      setStartNewSession(false);                  // Reset start new session state
     }
-  }, [startNewSession]); // Reset session results when starting a new session
+  }, [startNewSession]); 
 
+  // Show results box when session is finished with certain colors depending on the task result
   useEffect(() => {
     if (showResultsBox) {
       const color = getGlowColor(taskResult);
@@ -346,10 +346,8 @@ const YourProject = () => {
     }
   };
 
-
-
-
-  // For every frame, run the hand tracking model and the OpenPoint code
+  // For every frame, run the hand tracking model
+  // TODO -> Implement your changes mostly inside this function
   const predictWebcam = async () => {
     // Check if the video element, handLandmarker, canvas context, and canvas context are defined
     const ctx = canvasCtx.current;
@@ -371,8 +369,7 @@ const YourProject = () => {
       // console.log('🖐🏻 One hand detected, and its handedness is: ', results.handedness[0][0].categoryName==='Right' ? 'Left': 'Right');
     }else if(results.handedness.length==2){
 
-        // At startup, check if the user's hand size was saved in their DB
-     
+      // At startup, check if the user's hand size was saved in their DB
       if (handSizeCMRef.current === null) {
         console.warn('User does not have hand size saved in Local Storage')
         navigate('/recordhandsize'); // Redirect to hand size calibration page
@@ -414,6 +411,8 @@ const YourProject = () => {
             }
             // Pass the color and landmarks to drawLandmarks
             drawLandmarks_simple(ctx, handLandmarks, fillColor)
+
+            // TODO -> Add more drawings on the canvas, like lines between fingertips, etc.
           }
 
           // Example of how to get the coordinates of the pointing hand's index finger tip in x and y
@@ -428,9 +427,11 @@ const YourProject = () => {
           
           // IMPLEMENT YOUR CODE HERE
           // TODO -> Implement your proprioceptive metric here
-          /// **** The following code is just an example of how to calculate a proprioceptive metric **** ///
+          /// **** Start example  **** ///
 
-          // For example, calculate the distance between the two fingertips
+          // The following code is just an example of how to calculate a proprioceptive metric
+          // For instance, calculate the distance between the two fingertips, and stop when <100 pixels
+          // use calculateHandSizeCM to get the hand size in centimeters instead of pixels
           const score = calculateDistance(idx1, idx2);
 
           // Manage the end of the task based on a threshold or your own conditions
@@ -517,13 +518,12 @@ const YourProject = () => {
         <div className="resultsContainer" ref={resultsContainerRef}>
           {taskRepsRef.current <= totalNumberOfTasks ? (
             <>
-              <label className="resultsText">{taskResult.toFixed(2)}</label>
-              
+              <label className="resultsText">{taskResult.toFixed(2)} px</label>
             </>
           ) : (
             <div className="resultsInColumn">
               <label className="resultsText">
-                Mean: {calculateMeanDistance(sessionResultsRef.current)}
+                Mean: {calculateMean(sessionResultsRef.current)} px
               </label>
               {sessionResultsRef.current.map((score, index) => {
                 let color = '';
@@ -623,7 +623,7 @@ const YourProject = () => {
           </div>
 
           {/* TODO -> Change the thresholds for your impairment scale to provide feedback on the proprioceptive accuracy */}
-          <ImpairmentScale error={calculateMeanDistance(sessionResultsRef.current)} />
+          <ImpairmentScale error={calculateMean(sessionResultsRef.current)} />
 
 
           {!isiOS && (
