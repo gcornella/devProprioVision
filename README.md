@@ -31,6 +31,16 @@ cd devpropriovision
 git checkout -b your-assessment-name
 ```
 
+## 🧑‍💻 Customize or Build Your Own
+
+1. Open `YourProject.tsx` and look for `TODO` comments.
+2. Define which landmarks to use, how to calculate accuracy, and feedback logic.
+3. Results are automatically saved per session.
+
+Adapt logic to create new assessments by modifying distance logic, target zones, or animations.
+
+---
+
 ### Commit and Push Changes:
 
 ```bash
@@ -48,7 +58,7 @@ Go to your fork on GitHub and click **“Compare & pull request”** to propose 
 ## 📂 Project Structure
 
 ```
-propriovision
+devProprioVision
 ├── public/              # Static assets (images, icons)
 ├── src/
 │   ├── assets/          # Static media and logos
@@ -92,24 +102,32 @@ propriovision
 
 ## 🛠 YourProject.tsx
 
-Core functions:
+This is the main logic file for your proprioceptive assessment or game. It brings together user input, webcam capture, MediaPipe hand tracking, scoring, and feedback display.
 
-* `predictWebcam()` — Captures webcam input and runs MediaPipe hand detection.
-* `drawLandmarks_simple()` — Renders hand landmarks on a canvas.
-* `calculateDistance()` — Computes distances between hand points.
-* `saveResultsData()` — Saves scores to local storage.
+### Core Functions
+- **`predictWebcam()`** — Main loop capturing webcam input and applying the hand tracking model. Defines the assessment logic and feedback.
+- **`drawLandmarks_simple(ctx, landmarks, color)`** — Draws hand landmarks onto the canvas with a specified color.
+- **`calculateDistance(p1, p2)`** — Returns the pixel distance between two 2D points (e.g., fingertip coordinates).
+- **`saveResultsData(tag, sessionId, results)`** — Saves session results to local storage or database.
+- **`resizeCanvas()`** — Ensures the overlay canvas size matches the webcam stream dimensions.
+- **`createHandLandmarker()`** — Loads the MediaPipe hand tracking model using a WebAssembly-based resolver.
+- **`startWebcam(cameraId)`** — Initializes and starts the webcam stream from a selected camera device.
 
----
+### Key Concepts
+- **Session & Task State**: Tracks how many tasks are completed and manages repetition, session ID, and result storage using `useRef` and `useState`.
+- **Canvas Rendering**: Flips canvas horizontally to match mirrored webcam and overlays landmarks.
+- **User Settings**: Fetched from context (e.g. impaired hand, hand size, selected webcam).
+- **Live Feedback**: Based on your scoring metric, the UI reacts with color-coded feedback, animations, and visual scales.
+- **Intro & Results Screens**: `showIntroPopup` displays instructions; `showResultsBox` presents metrics and allows session restart.
 
-## 🧑‍💻 How to Customize or Build Your Own
+### How to Customize
+1. Inside `predictWebcam()`, choose which hand landmarks to analyze (e.g., index fingertips).
+2. Use or replace `calculateDistance()` with your own scoring function.
+3. Adjust task conditions, thresholds, and result visualization.
+4. Edit visual feedback using components like `ImpairmentScale.tsx`.
 
-1. Open `YourProject.tsx` and look for `TODO` comments.
-2. Define which landmarks to use, how to calculate accuracy, and feedback logic.
-3. Results are automatically saved per session.
+This file is modular and designed for rapid prototyping of new proprioceptive tasks.
 
-Adapt logic to create new assessments by modifying distance logic, target zones, or animations.
-
----
 
 ## ☁️ Deployment to Vercel
 
@@ -133,7 +151,7 @@ Deploy your app to Vercel in 5 steps:
 
 ---
 
-### 📥 Just Download & Run
+### 📥 Just Download & Run for faster testing
 
 Clone the repository:
 
@@ -183,4 +201,4 @@ If using this project in research or development, cite as:
 
 ## 🛟 Support / Contact
 
-For questions, bug reports, or collaborations: **[gcornella15@gmail.com](mailto:gcornella15@gmail.com)**
+For questions, bug reports, or collaborations: **[gcornella15@gmail.com](mailto:gcornella15@gmail.com)** or **[cornellg@uci.edu](mailto:cornellg@uci.edu)**
